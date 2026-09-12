@@ -1,5 +1,5 @@
 <!DOCTYPE RCC><RCC version="1.0">
-<qresource prefix="/icons">
+<qresource prefix="/">
     <file>icons/flag.png</file>
     <file>icons/mine.png</file>
 </qresource>

@@ -1,4 +1,4 @@
-
+set(CMAKE_AUTORCC ON)
 add_library(ui STATIC
     window.cpp
     window.h

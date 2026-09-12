@@ -1,6 +1,7 @@
 #include "tile.h"
 
 #include <QMouseEvent>
+#include <QFile>
 
 
 Tile::Tile(int row, int col, QWidget *parent)
@@ -63,6 +64,5 @@ void Tile::updateAppearance() {
             break;
     }
 
-    QIcon icon(":/icons/flag.png");
-    qDebug() << "Icon null?" << icon.isNull();
+    qDebug() << QFile::exists(":/icons/flag.png");
 } 

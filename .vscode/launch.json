@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "c:/Users/Jayde/VSC/EECS581-Project-1",
+      "program": "c:/Users/Jayde/VSC/EECS581-Project-1/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "visualizerFile": "c:\\Users\\Jayde\\AppData\\Roaming\\Code\\User\\workspaceStorage\\c61da80766af357d27a79a1b8360cfcf\\tonka3000.qtvsctools\\qt.natvis.xml"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # EECS581-Project-1
 
-To Build:
+
 Dependencies:
 Qt: https://www.qt.io/development/download
 cMake: https://cmake.org/download/

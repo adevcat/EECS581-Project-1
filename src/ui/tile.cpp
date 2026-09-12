@@ -2,6 +2,7 @@
 
 #include <QMouseEvent>
 #include <QFile>
+#include <QStyle>
 
 
 Tile::Tile(int row, int col, QWidget *parent)
@@ -10,9 +11,21 @@ Tile::Tile(int row, int col, QWidget *parent)
     m_col(col),
     visual_state()
 {
+    // set button style
+    setStyleSheet(
+        "Tile { "
+        "   border: 2px solid black; "
+        "   margin: 0px; "
+        "   padding: 0px; "
+        "} "
+        "Tile[state=\"covered\"]    { background-color: gray; } "
+        "Tile[state=\"uncovered\"]   { background-color: white; } "
+    );
+
+    int iconDim = static_cast<int>(qMin(width(), height()) * 0.8);
+    setIconSize(QSize(iconDim, iconDim));
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     updateAppearance();
-    setIconSize(QSize(32, 32));
-    setFixedSize(50, 50);
 
     // add trigger functions
     connect(this, &QPushButton::clicked, this, &Tile::handleClick);
@@ -47,22 +60,31 @@ void Tile::setState(TileAppearance state) {
 void Tile::updateAppearance() {
     switch (visual_state) {
         case TileAppearance::Covered:
-            setIcon(QIcon());
-            setStyleSheet("background-color: gray;");
+            updateTile("covered");
             break;
         case TileAppearance::Uncovered_empty:
-            setIcon(QIcon());
-            setStyleSheet("background-color: white;");
+            updateTile("uncovered");
             break;
         case TileAppearance::Flagged:
-            setStyleSheet("background-color: gray;");
-            setIcon(QIcon(":/icons/flag.png"));
+            updateTile("covered", QIcon(":/icons/flag.png"));
             break;
         case TileAppearance::Uncovered_mine:
-            setStyleSheet("background-color: white;");
-            setIcon(QIcon(":/icons/mine.png"));
+            updateTile("uncovered", QIcon(":/icons/mine.png"));
             break;
     }
-
-    qDebug() << QFile::exists(":/icons/flag.png");
 } 
+
+void Tile::updateTile(const char *state, QIcon icon) {
+    setIcon(icon);
+    setProperty("state", state);
+    style()->unpolish(this);
+    style()->polish(this);
+}
+
+// resize icons when resizing buttons
+void Tile::resizeEvent(QResizeEvent *event)
+{
+    QPushButton::resizeEvent(event);
+    int iconDim = static_cast<int>(qMin(width(), height()) * 0.8);
+    setIconSize(QSize(iconDim, iconDim));
+}

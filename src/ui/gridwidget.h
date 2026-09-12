@@ -12,6 +12,7 @@ public:
 
     static constexpr int kGridSize = 10;
 
+
 signals:
     void tileClicked(Tile *tile, Qt::MouseButton clickType);
     

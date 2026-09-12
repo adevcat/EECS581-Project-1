@@ -13,6 +13,8 @@ GridWidget::GridWidget(QWidget *parent)
 void GridWidget::setupUi()
 {
     auto *layout = new QGridLayout(this);
+    layout->setSpacing(0);
+    layout->setContentsMargins(0,0,0,0);
 
     m_tiles.resize(kGridSize);
     for (int row = 0; row < kGridSize; ++row) {
@@ -26,9 +28,15 @@ void GridWidget::setupUi()
             m_tiles[row][col] = tile;
         }
     }
+
+    // resize grid evenly when changing window size
+    for (int i = 0; i < kGridSize; ++i) {
+        layout->setRowStretch(i, 1);
+        layout->setColumnStretch(i, 1);
+    }
 }
 
-// TODO pass this onto handler
+// TODO create tileclicked signal to pass onto handler
 // Current function is just to test UI
 void GridWidget::handleTileClicked(Tile *tile, Qt::MouseButton clickType) {
     qDebug() << tile->toString() << "clicked with" << clickType;

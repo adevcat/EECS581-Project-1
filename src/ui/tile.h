@@ -27,6 +27,8 @@ signals:
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void updateAppearance();
+    void updateTile(const char *state, QIcon icon = QIcon());
+    void resizeEvent(QResizeEvent *event) override;
 
 private slots:
     void handleClick();

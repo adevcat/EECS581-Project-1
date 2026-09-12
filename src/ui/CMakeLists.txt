@@ -6,6 +6,8 @@ add_library(ui STATIC
     gridwidget.h
     tile.cpp 
     tile.h
+    infobar.h 
+    infobar.cpp 
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
 

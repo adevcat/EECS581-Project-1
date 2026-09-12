@@ -10,5 +10,7 @@ If QT is installed in a place different than the Path defined in CMakePresets.js
 Executable must be ran in the same directory as bundled libraries; if you are on linux or macOS, you must manually add the required libraries to the directory.  
 
 To build: 
+
 cmake --preset default --fresh
+
 cmake --build build

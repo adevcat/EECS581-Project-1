@@ -9,6 +9,7 @@ Tile::Tile(int row, int col, QWidget *parent)
     : QPushButton(parent), 
     m_row(row), 
     m_col(col),
+    mine_count(),
     visual_state()
 {
     // set button style
@@ -64,6 +65,10 @@ void Tile::updateAppearance() {
             break;
         case TileAppearance::Uncovered_empty:
             updateTile("uncovered");
+            // TODO show adjacent mine count
+            /*if (mine_count > 0) {
+                setText(mine_count);
+            }*/
             break;
         case TileAppearance::Flagged:
             updateTile("covered", QIcon(":/icons/flag.png"));

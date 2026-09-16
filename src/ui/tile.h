@@ -36,6 +36,7 @@ private slots:
 private:
     int m_row;
     int m_col;
+    int mine_count = 0;
     TileAppearance visual_state = TileAppearance::Covered; // sets init state to covered
 
 };

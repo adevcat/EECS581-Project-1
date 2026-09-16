@@ -1,3 +1,12 @@
+/**
+ * @file cell.h
+ * @brief Defines the Cell struct and CellState enum for the Minesweeper game.
+ * @author Zackary Rhodes
+ * @date 2026-09-16
+ * 
+ * Defines the core state tracking variables (COVERED, UNCOVERED, FLAGGED) 
+ * and inline helper methods for individual board cells.
+ */
 #ifndef CELL_H
 #define CELL_H
 #include <string>

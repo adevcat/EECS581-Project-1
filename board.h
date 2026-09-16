@@ -1,3 +1,12 @@
+/**
+ * @file board.h
+ * @brief Class declaration for managing the 10x10 Minesweeper grid.
+ * @author Zackary Rhodes
+ * @date 2026-09-16
+ * 
+ * Declares the Board class interface, tracking mine totals, active flag counts,
+ * grid dimensions, bounds validation, and cell state mutators.
+ */
 #ifndef BOARD_H
 #define BOARD_H
 

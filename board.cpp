@@ -1,3 +1,12 @@
+/**
+ * @file board.cpp
+ * @brief Implementation of the Board class for grid logic and state synchronization.
+ * @author Zackary Rhodes
+ * @date 2026-09-16
+ * 
+ * Contains full implementations for grid initialization, flag tracking, 
+ * boundary checks with exception handling, cell uncovering, and board resetting.
+ */
 #include "board.h"
 #include <iostream>
 #include <stdexcept>

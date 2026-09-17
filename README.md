@@ -23,6 +23,7 @@
 ```bash
 cmake --preset default --fresh
 cmake --build build
+.\build\bin\minesweeper.exe
 ```
 
 ### Linux

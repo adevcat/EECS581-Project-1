@@ -1,21 +1,57 @@
+/**
+ * @file gridwidget.cpp
+ * @brief Implementation of the Input Handler and grid renderer.
+ * @author Chissl (original grid), Will Godderz (game wiring + documentation)
+ * @date 2026-09-16
+ *
+ * Builds the labelled grid, routes clicks into LogicHandler, and repaints the
+ * cells the logic reports as changed.
+ *
+ * Inputs:  tile clicks; startNewGame(numMines).
+ * Outputs: tile repaints; flagsRemainingChanged and statusChanged signals.
+ *
+ * External sources: click routing, label headers and repaint logic added with
+ * assistance from Claude (Anthropic), a generative AI assistant, 2026-09-16.
+ */
 #include "gridwidget.h"
 #include "tile.h"
 
 #include <QGridLayout>
+#include <QLabel>
 
 GridWidget::GridWidget(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_board(),          // constructed first, then bound by reference below
+      m_logic(m_board)
 {
     setupUi();
 }
 
-// draws grid
+// draws the grid: column letters A-J across the top, row numbers 1-10 down the
+// left, and the 10x10 tile buttons offset by one row/column from those headers.
 void GridWidget::setupUi()
 {
     auto *layout = new QGridLayout(this);
     layout->setSpacing(0);
     layout->setContentsMargins(0,0,0,0);
 
+    // column headers A-J, placed in row 0 starting at column 1.
+    for (int col = 0; col < kGridSize; ++col) {
+        auto *label = new QLabel(QString(QChar('A' + col)), this);
+        label->setAlignment(Qt::AlignCenter);
+        label->setStyleSheet("font-weight: bold;");
+        layout->addWidget(label, 0, col + 1);
+    }
+
+    // row headers 1-10, placed in column 0 starting at row 1.
+    for (int row = 0; row < kGridSize; ++row) {
+        auto *label = new QLabel(QString::number(row + 1), this);
+        label->setAlignment(Qt::AlignCenter);
+        label->setStyleSheet("font-weight: bold;");
+        layout->addWidget(label, row + 1, 0);
+    }
+
+    // the tiles themselves, offset by the header row and column.
     m_tiles.resize(kGridSize);
     for (int row = 0; row < kGridSize; ++row) {
         m_tiles[row].resize(kGridSize);
@@ -24,30 +60,84 @@ void GridWidget::setupUi()
 
             connect(tile, &Tile::tileClick, this, &GridWidget::handleTileClicked);
 
-            layout->addWidget(tile, row, col);
+            layout->addWidget(tile, row + 1, col + 1);
             m_tiles[row][col] = tile;
         }
     }
 
-    // resize grid evenly when changing window size
-    for (int i = 0; i < kGridSize; ++i) {
+    // headers stay compact; the tile rows and columns share the space evenly.
+    layout->setRowStretch(0, 0);
+    layout->setColumnStretch(0, 0);
+    for (int i = 1; i <= kGridSize; ++i) {
         layout->setRowStretch(i, 1);
         layout->setColumnStretch(i, 1);
     }
 }
 
-// TODO create tileclicked signal to pass onto handler
-// Current function is just to test UI
-void GridWidget::handleTileClicked(Tile *tile, Qt::MouseButton clickType) {
-    qDebug() << tile->toString() << "clicked with" << clickType;
-    if (clickType == Qt::RightButton) {
-        tile->setState(TileAppearance::Flagged);
+// begin a new game: rebuild the board, clear every tile, and republish counters.
+void GridWidget::startNewGame(int numMines)
+{
+    m_logic.reset(numMines);
+    refreshAllTiles();
+
+    emit flagsRemainingChanged(m_logic.flagsRemaining());
+    emit statusChanged(m_logic.state());
+}
+
+// Input Handler entry point. validates nothing itself: it converts the Qt button
+// into a ClickType, hands the coordinates to the Game Logic, then repaints only
+// the cells the logic reports as changed.
+void GridWidget::handleTileClicked(Tile *tile, Qt::MouseButton clickType)
+{
+    if (!tile) {
+        return;
     }
-    if (clickType == Qt::LeftButton) {
-        if (tile->col() == 1) {
-            tile->setState(TileAppearance::Uncovered_mine);
-        } else {
-            tile->setState(TileAppearance::Uncovered_empty);
+
+    const ClickType click =
+        (clickType == Qt::RightButton) ? ClickType::Right : ClickType::Left;
+
+    const GameState before = m_logic.state();
+    const CellList changed = m_logic.handleClick(tile->row(), tile->col(), click);
+
+    for (const auto &coord : changed) {
+        refreshTile(coord.first, coord.second);
+    }
+
+    // flag count only moves on right clicks, but republishing is cheap and keeps the info bar correct after a loss reveals (and unflags) every mine.
+    emit flagsRemainingChanged(m_logic.flagsRemaining());
+
+    if (m_logic.state() != before) {
+        emit statusChanged(m_logic.state());
+    }
+}
+
+// translate one Board cell into its Tile appearance.
+void GridWidget::refreshTile(int row, int col)
+{
+    if (row < 0 || row >= kGridSize || col < 0 || col >= kGridSize) {
+        return;
+    }
+
+    const Cell &cell = m_board.getCell(row, col);
+    Tile *tile = m_tiles[row][col];
+
+    if (cell.isFlagged()) {
+        tile->setState(TileAppearance::Flagged);
+    } else if (cell.isCovered()) {
+        tile->setState(TileAppearance::Covered);
+    } else if (cell.hasMine) {
+        tile->setState(TileAppearance::Uncovered_mine);
+    } else {
+        tile->setState(TileAppearance::Uncovered_empty, cell.numOfAdjacentMines);
+    }
+}
+
+// repaint the whole grid, used when a new game resets every cell at once.
+void GridWidget::refreshAllTiles()
+{
+    for (int row = 0; row < kGridSize; ++row) {
+        for (int col = 0; col < kGridSize; ++col) {
+            refreshTile(row, col);
         }
     }
 }

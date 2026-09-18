@@ -1,3 +1,9 @@
+// File: main.cpp
+// Project: EECS 581 - Project 1: Minesweeper
+// Description: Application entry point, initializing QApplication, loading the embedded Qt resource binary for icons, and launching main Window.
+// Author: 
+// Creation Date: 2026-09-11
+
 #include <QApplication>
 #include "window.h"
 

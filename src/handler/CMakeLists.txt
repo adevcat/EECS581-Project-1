@@ -1,3 +1,8 @@
+# File: CMakeLists.txt
+# Project: EECS 581 - Project 1: Minesweeper
+# Description: CMake configuration defining static handler library and configuring include directories and Qt6 widget linking for UI target.
+# Author: 
+# Creation Date: 2026-09-11
 
 add_library(handler STATIC 
     tileHandler.cpp 

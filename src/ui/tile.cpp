@@ -1,3 +1,9 @@
+// File: title.cpp
+// Project: EECS 581 - Project 1: Minesweeper
+// Description: Implementation of Title (QPushButton subclass), handling mouse press events (distinhuishing lieft-click uncover vs. right-click flag),
+//              dyanmic stylesheet states, icon rendering, and responsive resizing. 
+// Creation Date: 2026-09-11
+
 #include "tile.h"
 
 #include <QMouseEvent>

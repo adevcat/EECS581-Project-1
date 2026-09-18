@@ -1,3 +1,9 @@
+# File: CMakeLists.txt
+# Project: EECS 581 - Project 1: Minesweeper
+# Description: CMake configuration creating main executable (minesweeper), linking Qt6::Widgets and the static UI library, and setting up post-build Windows deployment (windeployqt) and ZIP packaging.
+# Author: 
+# Creation Date: 2026-09-11
+
 qt_add_executable(minesweeper
     main.cpp
 )

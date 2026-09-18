@@ -1,3 +1,10 @@
+// File: Cgridwidget.h
+// Project: EECS 581 - Project 1: Minesweeper
+// Description: Header definition for GridWidget, declaring the 10x10board layout, title matrix storage, 
+//              and Qt signals/slots for title click routing.
+// Author: 
+// Creation Date: 2026-09-11
+
 #include <QWidget>
 #include <QVector>
 

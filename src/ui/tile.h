@@ -7,7 +7,7 @@ Creation Date: 2026-09-11*/
 /**
  * @file tile.h
  * @brief Declares Tile, a single clickable cell button in the Minesweeper grid.
- * @author Chissl (original widget), Will Godderz (numbers + documentation)
+ * @author Jaydee Brown (original widget), Will Godderz (numbers + documentation)
  * @date 2026-09-17
  *
  * Tile is a QPushButton that knows its own (row, col) and renders one of four

@@ -1,7 +1,7 @@
 /**
  * @file window.h
  * @brief Declares Window, the top-level application window.
- * @author Chissl (original window), Will Godderz (game setup + documentation)
+ * @author Jaydee Brown (original window), Will Godderz (game setup + documentation)
  * @date 2026-09-17
  *
  * Window assembles the user interface: the InfoBar readout, the labelled

@@ -7,7 +7,7 @@
 /**
  * @file infobar.cpp
  * @brief Implementation of the InfoBar status readout.
- * @author Chissl (original label), Will Godderz (status wiring + documentation)
+ * @author Jaydee Brown (original label), Will Godderz (status wiring + documentation)
  * @date 2026-09-17
  *
  * Renders the remaining mine count and the game status on a single centred line,

@@ -8,7 +8,7 @@
 /**
  * @file gridwidget.h
  * @brief Declares GridWidget, the Input Handler and grid renderer.
- * @author Chissl (original grid), Will Godderz (game wiring + documentation)
+ * @author Jaydee Brown (original grid), Will Godderz (game wiring + documentation)
  * @date 2026-09-17
  *
  * GridWidget draws the labelled 10x10 board (columns A-J, rows 1-10) and acts

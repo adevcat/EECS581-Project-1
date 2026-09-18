@@ -7,7 +7,7 @@
 /**
  * @file infobar.h
  * @brief Declares InfoBar, the status readout above the Minesweeper grid.
- * @author Chissl (original label), Will Godderz (status wiring + documentation)
+ * @author Jaydee Brown (original label), Will Godderz (status wiring + documentation)
  * @date 2026-09-17
  *
  * InfoBar shows the two readouts the specification requires: the remaining mine

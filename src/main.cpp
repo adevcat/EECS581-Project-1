@@ -7,7 +7,7 @@
 /**
  * @file main.cpp
  * @brief Application entry point for the Minesweeper game.
- * @author Chissl
+ * @author Jaydee Brown
  * @date 2026-09-17
  *
  * Creates the QApplication, loads the compiled icon resources, and shows the

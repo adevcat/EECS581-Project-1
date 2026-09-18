@@ -7,7 +7,7 @@
 /**
  * @file tile.cpp
  * @brief Implementation of the Tile cell button.
- * @author Chissl (original widget), Will Godderz (numbers + documentation)
+ * @author Jaydee Brown (original widget), Will Godderz (numbers + documentation)
  * @date 2026-09-17
  *
  * Handles tile styling, left/right click detection, and rendering of the four

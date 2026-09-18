@@ -9,7 +9,7 @@
 /**
  * @file gridwidget.cpp
  * @brief Implementation of the Input Handler and grid renderer.
- * @author Chissl (original grid), Will Godderz (game wiring + documentation)
+ * @author Jaydee Brown (original grid), Will Godderz (game wiring + documentation)
  * @date 2026-09-16
  *
  * Builds the labelled grid, routes clicks into LogicHandler, and repaints the

@@ -7,7 +7,7 @@
 /**
  * @file window.cpp
  * @brief Implementation of the top-level application window.
- * @author Chissl (original window), Will Godderz (game setup + documentation)
+ * @author Jaydee Brown (original window), Will Godderz (game setup + documentation)
  * @date 2026-09-17
  *
  * Builds the window layout, prompts for the mine count at startup and on each
@@ -30,7 +30,8 @@
 Window::Window(QWidget *parent)
     : QMainWindow(parent)
 {
-    setFixedSize(800, 900);
+    setMinimumSize(300, 400);
+    resize(600,700);
 
     // create ui
     setupUi();

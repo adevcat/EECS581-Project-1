@@ -4,18 +4,27 @@
 # Author: 
 # Creation Date: 2026-09-11
 
+# ---------------------------------------------------------------------------
+# src/ui/CMakeLists.txt  -  Qt widgets layer (User Interface + Input Handler).
+# Author: Will Godderz   Date: 2026-09-17
+#
+# Builds the `ui` static library and links it against Qt6::Widgets and `core`,
+# which supplies the Board Manager and Game Logic headers.
+# ---------------------------------------------------------------------------
 set(CMAKE_AUTORCC ON)
+
 add_library(ui STATIC
     window.cpp
     window.h
-    gridwidget.cpp 
+    gridwidget.cpp
     gridwidget.h
-    tile.cpp 
+    tile.cpp
     tile.h
-    infobar.h 
-    infobar.cpp 
+    infobar.h
+    infobar.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
 
-target_link_libraries(ui PUBLIC Qt6::Widgets)
+# PUBLIC so the executable inherits both the Qt and game-rule include paths.
+target_link_libraries(ui PUBLIC Qt6::Widgets core)
 target_include_directories(ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

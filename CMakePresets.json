@@ -19,6 +19,29 @@
         "CMAKE_MAKE_PROGRAM": "C:/Qt/Tools/mingw1310_64/bin/mingw32-make.exe",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "TRUE"
       }
+    },
+    {
+      "name": "default-linux",
+      "displayName": "Default (GCC + Qt 6.11.2)",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "environment": {
+        "CC": "/usr/bin/gcc",
+        "CXX": "/usr/bin/g++",
+        "PATH": "/usr/bin:$penv{PATH}"
+      },
+      "cacheVariables": {
+        "Qt6_DIR": "$env{HOME}/Qt/6.11.2/gcc_64/lib/cmake/Qt6",
+        "CMAKE_C_COMPILER": "/usr/bin/gcc",
+        "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+        "CMAKE_MAKE_PROGRAM": "/usr/bin/make",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "TRUE"
+      }
     }
   ]
 }

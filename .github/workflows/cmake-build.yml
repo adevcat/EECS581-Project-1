@@ -34,17 +34,11 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest'}}
       run: sudo apt update && sudo apt install -y qt6-base-dev libxkbcommon-dev
 
-    - name: Install Python (Windows)
-      if: ${{ matrix.os == 'windows-latest' }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.14.7
     - name: Install Qt (Windows)
       if: ${{ matrix.os == 'windows-latest' }}
       uses: jurplel/install-qt-action@v4
       with:
-        setup-python: false
-        aqtversion: '==3.3.*'
+        aqtsource: git+https://github.com/miurahr/aqtinstall.git@076e1659807d0b362a3ed684d54c2e9c775eb9c7
         version: ${{ matrix.qt }}
         host: 'windows'
         target: 'desktop'

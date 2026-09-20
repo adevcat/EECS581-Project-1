@@ -25,8 +25,12 @@ jobs:
           - os: windows-latest
             qt: 6.11.2
             build-preset: default
+            cpp_compiler: cl
+            c_compiler: cl
           - os: ubuntu-latest
             build-preset: default-linux
+            cpp_compiler: g++
+            c_compiler: gcc
     steps:
     - uses: actions/checkout@v4
 
@@ -47,7 +51,9 @@ jobs:
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake --preset ${{ matrix.build-preset}} --fresh
+      run: |
+          cmake --preset ${{ matrix.build-preset}} -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+          -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} --fresh
 
     - name: Build
       # Build your program with the given configuration

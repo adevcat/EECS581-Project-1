@@ -1,8 +1,8 @@
 // File: infobar.cpp
 // Project: EECS 581 - Project 1: Minesweeper
 // Description: Implementation of InfoBar, managing formatted display of remaining mine counts and elapsed game time using QLabel.
-// Author: 
-// Creation Date: 2026-09-11
+// Author: Jaydee Brown, Will Godderz
+// Creation Date: 2026-09-17
 
 /**
  * @file infobar.cpp

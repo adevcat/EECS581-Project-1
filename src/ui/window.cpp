@@ -1,8 +1,8 @@
 // File: window.cpp
 // Project: EECS 581 - Project 1: Minesweeper
 // Description: Implementation of Window (QMainWindow subclass), assembling the central widget layout containing InfoBar and GridWidget, setting window geometry, and handling aspect-ratio grid resizing.
-// Author: 
-// Creation Date: 2026-09-11
+// Author: Jaydee Brown, Will Godderz
+// Creation Date: 2026-09-17
 
 /**
  * @file window.cpp

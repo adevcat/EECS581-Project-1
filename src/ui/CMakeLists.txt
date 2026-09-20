@@ -1,8 +1,8 @@
 # File: CMakeLists.txt
 # Project: EECS 581 - Project 1: Minesweeper
 # Description: CMake configuration defining static UI library, including Qt resource complication (AUTORCC), widget source files, and Qt6::Widgets linkage.
-# Author: 
-# Creation Date: 2026-09-11
+# Author: Will Godderz
+# Creation Date: 2026-09-17
 
 # ---------------------------------------------------------------------------
 # src/ui/CMakeLists.txt  -  Qt widgets layer (User Interface + Input Handler).

@@ -1,8 +1,8 @@
 /* File: title.h
 Project: EECS 581 - Project 1: Minesweeper
 Description: Header definition for Title (QPushButton subclass) and the TitleAppearance enum class, declaring title coordinates, visual state management, custom click signals, and Qt event override. 
-Author: 
-Creation Date: 2026-09-11*/
+Author: Jaydee Brown, Will Godderz
+Creation Date: 2026-09-17*/
 
 /**
  * @file tile.h

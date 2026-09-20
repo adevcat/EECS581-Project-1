@@ -1,8 +1,8 @@
 // File: infobar.h
 // Project: EECS 581 - Project 1: Minesweeper
 // Description: Header definition for InfoBar, declaring QLabel subclass used to track and display the mine counter and elapsed time. 
-// Author: 
-// Creation Date: 2026-09-11
+// Author: Jaydee Brown, Will Godderz
+// Creation Date: 2026-09-17
 
 /**
  * @file infobar.h

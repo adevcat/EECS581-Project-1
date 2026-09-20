@@ -2,8 +2,8 @@
 // Project: EECS 581 - Project 1: Minesweeper
 // Description: Implementation of GridWidget, responsible for generating and laying out the title grid in a QGridLayout, 
 //              managing title resize stretching, and handling title click signal interactions.
-// Author: 
-// Creation Date: 2026-09-11
+// Author: Jaydee Brown
+// Creation Date: 2026-09-16
 
 
 /**

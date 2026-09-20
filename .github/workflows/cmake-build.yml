@@ -24,9 +24,9 @@ jobs:
         include:
           - os: windows-latest
             qt: 6.11.2
-            build-preset: build
+            build-preset: default
           - os: ubuntu-latest
-            build-preset: build-linux
+            build-preset: default-linux
     steps:
     - uses: actions/checkout@v4
 
@@ -34,10 +34,16 @@ jobs:
       if: ${{ matrix.os == 'ubuntu-latest'}}
       run: sudo apt update && sudo apt install -y qt6-base-dev libxkbcommon-dev
 
+    - name: Install Python (Windows)
+      if: ${{ matrix.os == 'windows-latest' }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.14.7
     - name: Install Qt (Windows)
       if: ${{ matrix.os == 'windows-latest' }}
       uses: jurplel/install-qt-action@v4
       with:
+        setup-python: false
         aqtversion: '==3.3.*'
         version: ${{ matrix.qt }}
         host: 'windows'

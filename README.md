@@ -5,6 +5,8 @@
 **Creation Date:** 2026-09-09
 **External Sources:** None
 
+> **Note:** This README covers setup, building, and gameplay. For meeting notes, team roles, and effort estimation, see the [project Wiki](https://github.com/adevcat/EECS581-Project-1/wiki).
+
 ## Prerequisites & Dependencies
 * **C++ Compiler:** C++17 compatible compiler (MinGW bundled with Qt recommended for Windows)
 * **CMake:** Version 3.21 or higher ([Download](https://cmake.org/download/))
